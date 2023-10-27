@@ -1,6 +1,3 @@
-views.py
-
-
 from rest_framework.decorators import api_view,permission_classes
 from jio.models import Mobile
 from rest_framework.response import Response
@@ -54,7 +51,7 @@ def login_user(request):
 
              mobileuser = authenticate(request, username=username,email=email, password=password)
 
-             if mobileuser:
+             if mobileuser:  
                  token = get_tokens_for_user(mobileuser)
                  return JsonResponse({'token': token})
              else:

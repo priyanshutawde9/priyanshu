@@ -1,7 +1,3 @@
-app.urls.py
-
-
-
 from django.urls import path
 from jio import views
 
