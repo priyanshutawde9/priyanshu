@@ -1,0 +1,30 @@
+serializers.py
+
+
+
+from rest_framework import serializers
+from .models import Mobile
+
+class MobileSerializer(serializers.Serializer):
+    class Meta:
+        model = Mobile
+        fields= '__all__'
+
+
+    def create(self, validated_data):
+        return Mobile.objects.create(**validated_data)
+
+
+    model = serializers.CharField(required=True)
+    ram = serializers.CharField(required=True)
+    storage = serializers.CharField(required=True)
+
+    def validate_name(self,value):
+        if Mobile.objects.filter(name=value):
+         raise serializers.ValidationError("A mobile with this name already exists.")
+        return value
+
+class MobileUserSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=255)
+    email = serializers.EmailField(max_length=200) 
+    password = serializers.CharField(max_length=150) 

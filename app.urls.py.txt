@@ -1,0 +1,12 @@
+app.urls.py
+
+
+
+from django.urls import path
+from jio import views
+
+urlpatterns = [
+    path('', views.getData),
+    path('add/', views.addMobile),
+    path('login/', views.login_user, name='login'),
+]

@@ -1,0 +1,11 @@
+admin.py
+
+
+
+
+from django.contrib import admin
+from .models import Mobile
+# Register your models here.
+@admin.register(Mobile)
+class BookAdmin(admin.ModelAdmin):
+ list_display = ['model', 'ram', 'storage']
